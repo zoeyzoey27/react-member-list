@@ -84,6 +84,15 @@ const Home = () => {
             <React.Fragment>Sort: {props.getSortText()}</React.Fragment>
          )
      }
+
+     const  deleteMember = (user,index) => {
+        if (reactMembers.includes(user)){
+             dispatch(actions.deleteReactMember(index))
+        }
+      else {
+         dispatch(actions.deleteJavaMember(index))
+      }
+      }
     
       return (
       <div className='home-container'>
@@ -101,7 +110,8 @@ const Home = () => {
             {reactMembers.length > 0 ? reactMemberToRender==0 ? <div className="empty-noti">Không có dữ liệu</div> : 
             reactMemberToRender.map((user, index) => {
                 return  <Member id={index} name={user.name} age={user.age} classType="react" key={index} 
-                handleTranfer={() => tranferReactToJavaMember(index)}/>
+                handleTranfer={() => tranferReactToJavaMember(index)}
+                handleDelete={() => deleteMember(user,index)}/>
             }) : <div className="empty-noti">Empty class</div>}
 
             {/* Java class */}
@@ -110,7 +120,8 @@ const Home = () => {
             {javaMembers.length > 0 ? javaMemberToRender==0 ? <div className="empty-noti">Không có dữ liệu</div> : 
             javaMemberToRender.map((user,index) => {
                 return <Member id={index} name={user.name} age={user.age} classType="java" key={index} 
-                        handleTranfer={() => tranferJavaToReactMember(index)} />
+                        handleTranfer={() => tranferJavaToReactMember(index)}
+                        handleDelete={() => deleteMember(user,index)} />
             }) : <div className="empty-noti">Empty class</div> }
        </div>
   )

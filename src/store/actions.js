@@ -2,7 +2,8 @@ import { SET_MEMBER_INPUT,
     ADD_REACT_MEMBER,
     ADD_JAVA_MEMBER,
     DELETE_JAVA_MEMBER,
-    DELETE_REACT_MEMBER } from "./constant";
+    DELETE_REACT_MEMBER,
+    EDIT_REACT_MEMBER } from "./constant";
 
 export const setMemberInput = payload => ({
     type: SET_MEMBER_INPUT,
@@ -27,6 +28,12 @@ export const deleteReactMember = payload => ({
 export const deleteJavaMember = payload => ({
     type: DELETE_JAVA_MEMBER,
     payload
+})
+
+export const editReactMember = (payload1,payload2) => ({
+    type: EDIT_REACT_MEMBER,
+    payload1,
+    payload2
 })
 
 

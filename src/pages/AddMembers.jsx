@@ -2,6 +2,7 @@ import React from 'react'
 import { useStore,actions } from '../store'
 import { Link } from 'react-router-dom'
 import { useRef } from 'react'
+import { INIT_DATA } from '../data'
 
 const AddMembers = () => {
      const [state , dispatch] = useStore()
@@ -12,7 +13,7 @@ const AddMembers = () => {
          e.preventDefault();
          if (member.classType === 'react') dispatch(actions.addReactMember(member))
          else dispatch(actions.addJavaMember(member))
-         dispatch(actions.setMemberInput({name:"",age:"",classType:"react"}))
+         dispatch(actions.setMemberInput(INIT_DATA))
          nameInput.current.focus();
      }
      console.log(member.classType)
