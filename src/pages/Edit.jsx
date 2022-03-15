@@ -2,17 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useStore,actions } from '../store'
-import { useState,useRef } from 'react'
+import { useState,useRef,useEffect } from 'react'
 import { INIT_DATA } from '../data'
 
 const Edit = () => {
-  const {id,idClass} = useParams()
-  console.log(id,idClass)
+  const {id,id1} = useParams()
+  console.log(id,id1)
   const [state , dispatch] = useStore()
   let {member , reactMembers, javaMembers} = state
   
-  const [userSelected, setUserSelected] = useState (reactMembers[id])
- 
+  let members
+  if (id1 == 0) members=reactMembers[id] 
+  else members=javaMembers[id]
+  const [userSelected, setUserSelected] = useState (members)
+
+  
   console.log(userSelected)
 
   const nameInput = useRef();
@@ -25,7 +29,8 @@ const Edit = () => {
   }
   const handleEdit = (e) => {
     e.preventDefault();
-    dispatch(actions.editReactMember(id,userSelected))
+    if (id1==0) dispatch(actions.editReactMember(id,userSelected))
+    else dispatch(actions.editJavaMember(id,userSelected))
     setUserSelected(INIT_DATA)
     nameInput.current.focus();
   }

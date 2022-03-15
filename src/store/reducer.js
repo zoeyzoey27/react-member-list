@@ -3,7 +3,8 @@ import { ADD_REACT_MEMBER,
          ADD_JAVA_MEMBER, 
          DELETE_REACT_MEMBER,
          DELETE_JAVA_MEMBER, 
-         EDIT_REACT_MEMBER } from "./constant"
+         EDIT_REACT_MEMBER,
+         EDIT_JAVA_MEMBER } from "./constant"
 
 export const initState = {
     member: {
@@ -58,6 +59,14 @@ const reducer = (state,action) => {
           return {
              ...state,
              reactMembers: newMembers 
+          }
+        }
+        case EDIT_JAVA_MEMBER:{
+          const newMembers = [...state.javaMembers]
+          newMembers.splice(action.payload1,1,action.payload2)
+          return {
+             ...state,
+             javaMembers: newMembers 
           }
         }
     } 

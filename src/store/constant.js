@@ -4,3 +4,4 @@ export const ADD_JAVA_MEMBER = "add_java_member";
 export const DELETE_REACT_MEMBER = "delete_react_member";
 export const DELETE_JAVA_MEMBER = "delete_java_member";
 export const EDIT_REACT_MEMBER = "edit_react_member";
+export const EDIT_JAVA_MEMBER = "edit_java_member";
